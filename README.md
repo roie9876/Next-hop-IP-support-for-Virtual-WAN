@@ -14,7 +14,7 @@ Deploying NVAs behind a load balancer provides higher availability and load dist
 
 > **Illustration:**
 > An example Azure Virtual WAN scenario with Next Hop IP. 
-![Next Hop IP Diagram](https://learn.microsoft.com/en-us/azure/virtual-wan/media/next-hop-ip/next-hop-ip-diagram.png)
+![Next Hop IP Diagram](./images/next-hop-ip-diagram.png)
 Here, “Hub 1” (Virtual WAN hub) is connected to a VNet (cloud) containing an NVA (`192.168.1.4`) and an internal load balancer (`192.168.1.40`). The NVA peers with the hub via BGP. With the Next Hop IP feature, the NVA can advertise a route (e.g. to the `10.222.222.0/24` network) with the load balancer’s IP (`192.168.1.40`) as the next hop. This means Hub 1 will send traffic for that network to the LB, which then forwards it to the NVA.
 
 In short, Next Hop IP support lets Virtual WAN treat an intermediate device (like a load balancer) as the next hop for routes. This capability brings improved load balancing and connectivity options.
