@@ -1,6 +1,6 @@
 # Azure Virtual WAN Overview and the New “Next Hop IP” Feature
 
-![Azure Virtual WAN with Next Hop IP Example](./images/virtual-wan-next-hop-ip.png)
+
 
 Azure Virtual WAN is a Microsoft cloud networking service that unifies many networking, security, and routing functions under a single, managed interface. In simple terms, Virtual WAN acts like a global network backbone in Azure, allowing you to easily connect your branch offices, on-premises data centers, remote users, and Azure virtual networks through centrally managed hubs. It supports multiple connection types (for example, site-to-site VPN, point-to-site VPN for remote users, and private links via Azure ExpressRoute) and ties them together with Azure’s high-speed backbone network. Think of it as an all-in-one cloud WAN: you get a hub-and-spoke architecture where the Azure-managed hub handles routing between all your “spokes” (branches, VPNs, VNets, etc.), making it easier to build a global transit network and apply security consistently.
 
@@ -14,7 +14,8 @@ Deploying NVAs behind a load balancer provides higher availability and load dist
 
 > **Illustration:**
 > An example Azure Virtual WAN scenario with Next Hop IP. 
-![Next Hop IP Diagram](./images/next-hop-ip-diagram.png)
+![Next Hop IP Diagram]
+(./images/virtual-wan-next-hop-ip.png)
 Here, “Hub 1” (Virtual WAN hub) is connected to a VNet (cloud) containing an NVA (`192.168.1.4`) and an internal load balancer (`192.168.1.40`). The NVA peers with the hub via BGP. With the Next Hop IP feature, the NVA can advertise a route (e.g. to the `10.222.222.0/24` network) with the load balancer’s IP (`192.168.1.40`) as the next hop. This means Hub 1 will send traffic for that network to the LB, which then forwards it to the NVA.
 
 In short, Next Hop IP support lets Virtual WAN treat an intermediate device (like a load balancer) as the next hop for routes. This capability brings improved load balancing and connectivity options.
